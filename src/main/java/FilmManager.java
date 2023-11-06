@@ -1,9 +1,9 @@
 public class FilmManager {
-    private final int result;
+    private int result = 5;
     private Poster[] items = new Poster[0];
 
     public FilmManager() {
-        this.result = 5;
+        this.result = result;
     }
 
     public FilmManager(int resultLength) {
@@ -40,11 +40,13 @@ public class FilmManager {
 
     public Poster[] findLast() {
         Poster[] all = findAll();
+        if (result > all.length) {
+            result = all.length;
+        }
         Poster[] reversed = new Poster[result];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
         return reversed;
     }
-
 }

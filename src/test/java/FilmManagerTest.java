@@ -46,10 +46,36 @@ public class FilmManagerTest {
 
 
     @Test
-    public void shouldGetDefaultValueReversedItems() {
+    public void shouldGetAboveDefaultValueReversedItems() {
 
         Poster[] expected = {item7, item6, item5, item4, item3};
         Poster[] actual = manager.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetEqualDefaultValueReversedItems() {
+        FilmManager len = new FilmManager();
+        len.addFilm(item1);
+        len.addFilm(item2);
+        len.addFilm(item3);
+        len.addFilm(item4);
+        len.addFilm(item5);
+
+        Poster[] expected = {item5, item4, item3, item2, item1};
+        Poster[] actual = len.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetBelowDefaultValueReversedItems() {
+        FilmManager len = new FilmManager();
+        len.addFilm(item1);
+        len.addFilm(item2);
+        len.addFilm(item3);
+
+        Poster[] expected = {item3, item2, item1};
+        Poster[] actual = len.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -102,7 +128,7 @@ public class FilmManagerTest {
     }
 
     @Test
-    public void shouldGet0LastItems() {
+    public void shouldGetBelowMinLastItems() {
         FilmManager len = new FilmManager(0);
         len.addFilm(item1);
         len.addFilm(item2);
