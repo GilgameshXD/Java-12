@@ -4,9 +4,7 @@ public class FilmManager {
 
     public void addFilm(Poster item) {
         Poster[] tmp = new Poster[items.length + 1];
-        for (int i = 0; i < items.length; i++) {
-            tmp[i] = items[i];
-        }
+        System.arraycopy(items, 0, tmp, 0, items.length);
         tmp[tmp.length - 1] = item;
         items = tmp;
     }
@@ -29,9 +27,8 @@ public class FilmManager {
     }
 
     public Poster[] findLast() {
-        int resultLength = 5;
         Poster[] all = findAll();
-        Poster[] reversed = new Poster[resultLength];
+        Poster[] reversed = new Poster[5];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
@@ -39,14 +36,8 @@ public class FilmManager {
     }
 
     public Poster[] findLast(int result) {
-        int resultLength;
-        if (result == 0) {
-            resultLength = 5;
-        } else {
-            resultLength = result;
-        }
         Poster[] all = findAll();
-        Poster[] reversed = new Poster[resultLength];
+        Poster[] reversed = new Poster[result];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
