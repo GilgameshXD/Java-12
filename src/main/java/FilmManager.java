@@ -1,16 +1,12 @@
 public class FilmManager {
+    private final int result;
     private Poster[] items = new Poster[0];
-    private int result;
 
     public FilmManager() {
         this.result = 5;
     }
 
     public FilmManager(int resultLength) {
-
-        if (resultLength >= items.length) {
-            result = items.length;
-        }
         if (resultLength == 0) {
             result = 1;
         } else {

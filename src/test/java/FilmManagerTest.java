@@ -102,6 +102,22 @@ public class FilmManagerTest {
     }
 
     @Test
+    public void shouldGet0LastItems() {
+        FilmManager len = new FilmManager(0);
+        len.addFilm(item1);
+        len.addFilm(item2);
+        len.addFilm(item3);
+        len.addFilm(item4);
+        len.addFilm(item5);
+        len.addFilm(item6);
+        len.addFilm(item7);
+
+        Poster[] expected = {item7};
+        Poster[] actual = len.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldRemoveById() {
         manager.removeById(item2.getId());
         manager.removeById(item3.getId());
