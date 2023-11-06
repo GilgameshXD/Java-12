@@ -54,18 +54,50 @@ public class FilmManagerTest {
     }
 
     @Test
-    public void shouldGet3ReversedItems() {
+    public void shouldGet1LastItem() {
+        FilmManager len = new FilmManager(1);
+        len.addFilm(item1);
+        len.addFilm(item2);
+        len.addFilm(item3);
+        len.addFilm(item4);
+        len.addFilm(item5);
+        len.addFilm(item6);
+        len.addFilm(item7);
 
-        Poster[] expected = {item7, item6, item5};
-        Poster[] actual = manager.findLast(3);
+        Poster[] expected = {item7};
+        Poster[] actual = len.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldGet7ReversedItems() {
+    public void shouldGet3RLastItems() {
+        FilmManager len = new FilmManager(3);
+        len.addFilm(item1);
+        len.addFilm(item2);
+        len.addFilm(item3);
+        len.addFilm(item4);
+        len.addFilm(item5);
+        len.addFilm(item6);
+        len.addFilm(item7);
+
+        Poster[] expected = {item7, item6, item5};
+        Poster[] actual = len.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGet7LastItems() {
+        FilmManager len = new FilmManager(7);
+        len.addFilm(item1);
+        len.addFilm(item2);
+        len.addFilm(item3);
+        len.addFilm(item4);
+        len.addFilm(item5);
+        len.addFilm(item6);
+        len.addFilm(item7);
 
         Poster[] expected = {item7, item6, item5, item4, item3, item2, item1};
-        Poster[] actual = manager.findLast(7);
+        Poster[] actual = len.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
