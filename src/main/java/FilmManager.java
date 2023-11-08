@@ -1,5 +1,5 @@
 public class FilmManager {
-    private int result = 5;
+    private int result;
     private Poster[] items = new Poster[0];
 
     public void addFilm(Poster item) {
@@ -29,15 +29,7 @@ public class FilmManager {
     }
 
     public FilmManager() {
-        int resultLength;
-        if (findAll().length < 5) {
-            resultLength = findAll().length;
-        } else {
-            resultLength = 5;
-        }
-        result = resultLength;
-
-
+        result = 5;
     }
 
     public FilmManager(int resultLength) {
@@ -50,10 +42,16 @@ public class FilmManager {
 
     public Poster[] findLast() {
         Poster[] all = findAll();
-        Poster[] reversed = new Poster[result];
-        for (int i = 0; i < reversed.length; i++) {
-            reversed[i] = all[all.length - 1 - i];
+        int resultLength;
+        if (result < all.length) {
+            resultLength = result;
+        } else {
+            resultLength = all.length;
         }
-        return reversed;
+        Poster[] result = new Poster[resultLength];
+        for (int i = 0; i < result.length; i++) {
+            result [i] = all[all.length - 1 - i];
+        }
+        return result;
     }
 }

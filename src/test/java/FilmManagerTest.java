@@ -74,7 +74,7 @@ public class FilmManagerTest {
         len.addFilm(item2);
         len.addFilm(item3);
 
-        Poster[] expected = { item3, item2, item1};
+        Poster[] expected = {item3, item2, item1};
         Poster[] actual = len.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
